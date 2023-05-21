@@ -15,9 +15,12 @@
     "@angular/compiler": "^16.0.0",
     "@angular/core": "^16.0.0",
     "@angular/forms": "^16.0.0",
+    "@angular/material": "^16.0.1",
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "@material/form-field": "^15.0.0-canary.3b5b55e31.0",
+    "angular-table-npm": "^1.0.8",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
