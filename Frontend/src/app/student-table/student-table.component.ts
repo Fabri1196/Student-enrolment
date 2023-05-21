@@ -14,7 +14,7 @@ import { NewStudentComponent } from '../new-student/new-student.component';
 
 export class StudentTableComponent implements OnInit {
     dataSource: Student[] = [];
-    displayedColumns: string[] = ['lastname', 'firstname', 'age', 'email'];
+    displayedColumns: string[] = ['lastname', 'firstname', 'age', 'email', 'actions'];
   
     constructor(private studentService: StudentService, public dialog: MatDialog) { }
   
@@ -24,7 +24,7 @@ export class StudentTableComponent implements OnInit {
       });
     }
   
-    lookForBuses(): void {
+    newStudent(): void {
       this.openCreateDialog(new Student());
     }
   

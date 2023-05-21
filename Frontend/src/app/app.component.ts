@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'crud-app';
+  title = 'Student Enrolment';
+
+  refresh(): void {
+    window.location.reload();
+  }
 }

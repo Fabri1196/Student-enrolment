@@ -16,5 +16,17 @@ namespace Domain.Entities
 
         public string email { get; set; }
 
+        public Student(string lastname, string firstname, int age, string email)
+        {
+            this.lastname = lastname;
+            this.firstname = firstname;
+            this.age = age;
+            this.email = email;
+        }
+
+        /// <summary>
+        /// To be used by the de-serializer
+        /// </summary>
+        public Student() { }
     }
 }

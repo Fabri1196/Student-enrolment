@@ -9,7 +9,7 @@ import { StudentTableComponent } from './student-table/student-table.component';
 import { NewStudentComponent } from './new-student/new-student.component';
 
 // Material Components
-import { MatTableModule } from '@angular/material/table';
+import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -18,8 +18,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { MatNativeDateModule } from '@angular/material/core';
+import {MatNativeDateModule} from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -44,8 +45,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
-  providers: [MatDatepickerModule],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

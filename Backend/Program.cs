@@ -19,6 +19,11 @@ namespace Application
             var db = new LiteDatabase(@"TestDatabase.db");
             IRepository<Student> repository = new StudenDatabase(db);
 
+            if (repository.GetAll().Any() == false)
+            {
+                populateDatabase(repository);
+            }
+
             builder.Services.AddScoped<IStudentService, StudentService>(f => new StudentService(repository));
 
             // Add services to the container.
@@ -57,6 +62,16 @@ namespace Application
             app.MapControllers();
 
             app.Run();
+        }
+        private static void populateDatabase(IRepository<Student> repository)
+        {
+            repository.Insert(
+                new Student(
+                    "Cesar",
+                    "Johnson",
+                    19,
+                    "cesarjohnson@gmail.com"
+                ));
         }   
     }
 
