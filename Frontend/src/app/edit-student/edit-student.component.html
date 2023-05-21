@@ -1,0 +1,60 @@
+<div mat-dialog-content class="window">
+  <h1>Complete the details</h1>
+  <div class="row">
+    <div class="column">
+      <div class="report-aggregate-details">
+        <mat-form-field>
+          <mat-label>Last Name:</mat-label>
+          <input
+            [formControl]="lastnameControl"
+            matInput
+            #input
+            maxlength="30"
+            placeholder="Ex. Smith"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="report-aggregate-details">
+        <mat-form-field>
+          <mat-label>Destination:</mat-label>
+          <input
+            [formControl]="firstnameControl"
+            matInput
+            #input
+            maxlength="30"
+            placeholder="Ex. Adam"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="report-aggregate-details">
+        <mat-form-field>
+          <mat-label>Age:</mat-label>
+          <input
+            [formControl]="ageControl"
+            matInput
+            #input
+            maxlength="30"
+            placeholder="Ex. 18"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="report-aggregate-details">
+        <mat-form-field>
+          <mat-label>Email:</mat-label>
+          <input
+            [formControl]="emailControl"
+            matInput
+            #input
+            maxlength="30"
+            placeholder="Ex. smithadam@example.com"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="column"></div>
+  </div>
+  <div class="add-report"></div>
+</div>

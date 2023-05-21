@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StudentTableComponent } from './student-table/student-table.component';
 import { NewStudentComponent } from './new-student/new-student.component';
+import { EditStudentComponent } from './edit-student/edit-student.component';
+import { ViewStudentComponent } from './view-student/view-student.component';
 
 // Material Components
 import {MatTableModule} from '@angular/material/table';
@@ -22,14 +24,13 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// import { Table } from './sss/student-table.component';
-
 @NgModule({
   declarations: [
     AppComponent,
     StudentTableComponent,
     NewStudentComponent,
-    // Table
+    EditStudentComponent,
+    ViewStudentComponent
   ],
   imports: [
     BrowserModule,
