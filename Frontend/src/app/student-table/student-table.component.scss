@@ -1,20 +1,13 @@
-.student-table {
-    width: 100%;
-    margin: 15px;
+table {
+    width: 90%;
+    margin:1rem auto;
   }
   
-.add-button {
-  width: 100%;
-  margin: 15px;
-  font-size: 15px;
-}
-  
-.mat-mdc-row .mat-mdc-cell {
-  border-bottom: 1px solid transparent;
-  border-top: 1px solid transparent;
-  cursor: pointer;
-}
-  
-.mat-mdc-row:hover .mat-mdc-cell {
-  border-color: green;
-}
+  .contenedor {
+    display: flex;
+    flex-direction: column;
+    margin:1rem auto;
+    max-width: 600px;
+    box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75);
+    padding: 1rem;
+  }  

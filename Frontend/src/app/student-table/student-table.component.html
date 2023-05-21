@@ -1,43 +1,54 @@
+<!-- <button
+  mat-raised-button 
+  color="basic"
+  (click)="newStudent()"
+  class="add-button"
+  align="end"
+> -->
 <button
   mat-raised-button 
   color="basic"
   (click)="newStudent()"
   class="add-button"
   align="end"
->
-  Look for your travel ticket
-</button>
+>New Student</button>
+<table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 student-table">
-  <ng-container matColumnDef="lastname">
-    <th mat-header-cell *matHeaderCellDefs>Last Name</th>
-    <td mat-cell *matCellDef="let element">{{ element.lastname }}</td>
-  </ng-container>
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let student"> {{student.lastname}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let student"> {{student.firstname}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Ages </th>
+      <td mat-cell *matCellDef="let student"> {{student.age}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="firstname">
-    <th mat-header-cell *matHeaderCellDefs>First Name</th>
-    <td mat-cell *matCellDef="let element">{{ element.first }}</td>
-  </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let student"> {{student.email}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="age">
-    <th mat-header-cell *matHeaderCellDefs>Age</th>
-    <td mat-cell *matCellDef="let element">{{ element.age }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDefs>Email</th>
-    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDefs>Actions</th>
-    <td>
-      <button mat-raised-button color="primary">View</button
-      ><button mat-raised-button color="primary">Edit</button
-      ><button mat-raised-button color="warn" focusable="false">Delete</button>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let j = index;">
+        <button mat-raised-button color="primary" focusable="false">
+          View
+        </button>
+        <button mat-raised-button color="primary" focusable="false">
+          Edit
+        </button>
+        <button mat-raised-button color="warn" focusable="false">
+          Delete
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

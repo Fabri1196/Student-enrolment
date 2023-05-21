@@ -1,42 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Student } from '../student/Student';
-import { StudentService } from '../student/Student.Service';
+import { Component, ViewChild } from '@angular/core';
+import { MatTable } from '@angular/material/table';
 import { NewStudentComponent } from '../new-student/new-student.component';
-
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'student-table',
   templateUrl: './student-table.component.html',
-  providers: [StudentService],
   styleUrls: ['./student-table.component.scss']
 })
+export class StudentTableComponent {
+  displayedColumns: string[] = ['lastname', 'firstname', 'age', 'email', 'actions'];
 
-export class StudentTableComponent implements OnInit {
-    dataSource: Student[] = [];
-    displayedColumns: string[] = ['lastname', 'firstname', 'age', 'email', 'actions'];
-  
-    constructor(private studentService: StudentService, public dialog: MatDialog) { }
-  
-    getTravelTickets(): void {
-      this.studentService.getStudents().subscribe(result => {
-        this.dataSource = result;
-      });
+  datos: Student[] = [new Student('jj', 'papas', 55, 'e'),
+  new Student('jose', 'manzanas', 53, 'm'),
+  new Student('juan', 'naranjas', 25, 'aa'),
+  ];
+
+  @ViewChild(MatTable) tabla1!: MatTable<Student>;
+
+  constructor(public dialog: MatDialog) { }
+
+  newStudent(): void {
+      this.openCreateDialog();
     }
   
-    newStudent(): void {
-      this.openCreateDialog(new Student());
-    }
-  
-    openCreateDialog(row: Student): void {
+    openCreateDialog(): void {
       const dialogRef = this.dialog.open(NewStudentComponent);
   
-      dialogRef.afterClosed().subscribe(result => {
-        this.getTravelTickets();
-      });
+      // dialogRef.afterClosed().subscribe(result => {
+      //   this.getTravelTickets();
+      // });
     }
-  
-    ngOnInit(): void {
-      this.getTravelTickets();
-    }
+}
+
+
+export class Student {
+  constructor(public lastname: string, public firstname: string, public age: number, public email: string) {
   }
+}

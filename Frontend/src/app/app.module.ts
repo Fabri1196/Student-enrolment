@@ -22,11 +22,14 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// import { Table } from './sss/student-table.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     StudentTableComponent,
-    NewStudentComponent
+    NewStudentComponent,
+    // Table
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
