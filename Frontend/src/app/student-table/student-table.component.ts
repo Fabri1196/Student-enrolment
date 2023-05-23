@@ -4,6 +4,7 @@ import { NewStudentComponent } from '../new-student/new-student.component';
 import { MatDialog } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 import { ViewStudentComponent } from '../view-student/view-student.component';
+import { DeleteStudentComponent } from '../delete-student/delete-student.component';
 
 @Component({
   selector: 'student-table',
@@ -11,6 +12,7 @@ import { ViewStudentComponent } from '../view-student/view-student.component';
   styleUrls: ['./student-table.component.scss'],
 })
 export class StudentTableComponent {
+  // information: Student[] = [];
   displayedColumns: string[] = [
     'lastname',
     'firstname',
@@ -19,7 +21,7 @@ export class StudentTableComponent {
     'actions',
   ];
 
-  datos: Student[] = [
+  information: Student[] = [
     new Student('jj', 'papas', 55, 'e'),
     new Student('jose', 'manzanas', 53, 'm'),
     new Student('juan', 'naranjas', 25, 'aa'),
@@ -41,8 +43,10 @@ export class StudentTableComponent {
     // });
   }
 
-  seeStudent(index: number): void {
-    const dialogRef = this.dialog.open(ViewStudentComponent);
+  seeStudent(student: Student): void {
+    const dialogRef = this.dialog.open(ViewStudentComponent, {
+      data: student,
+    });
   }
 
   openSeeDialog(index: number): void {
@@ -53,8 +57,10 @@ export class StudentTableComponent {
     // });
   }
 
-  editStudent(): void {
-    this.openEditDialog();
+  editStudent(student: Student): void {
+    const dialogRef = this.dialog.open(EditStudentComponent, {
+      data: student,
+    });
   }
 
   openEditDialog(): void {
@@ -65,8 +71,10 @@ export class StudentTableComponent {
     // });
   }
 
-  deleteStudent(): void {
-    this.openCreateDialog();
+  deleteStudent(student: Student): void {
+    const dialogRef = this.dialog.open(DeleteStudentComponent, {
+      data: student,
+    });
   }
 }
 

@@ -5,12 +5,12 @@ import { Student } from '../student/Student';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'edit-student',
-  templateUrl: './edit-student.component.html',
+  selector: 'delete-student',
+  templateUrl: './delete-student.component.html',
   providers: [StudentService],
-  styleUrls: ['./edit-student.component.scss'],
+  styleUrls: ['./delete-student.component.scss'],
 })
-export class EditStudentComponent {
+export class DeleteStudentComponent {
   protected student: Student;
   lastnameControl: FormControl;
   firstnameControl: FormControl;

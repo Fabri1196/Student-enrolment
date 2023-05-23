@@ -3,55 +3,19 @@
     <div class="row">
       <div class="column">
         <div class="report-aggregate-details">
-          <mat-form-field>
-            <mat-label>Last Name:</mat-label>
-            <input
-              [formControl]="lastnameControl"
-              matInput
-              #input
-              maxlength="30"
-              placeholder="Ex. Smith"
-            />
-          </mat-form-field>
+          Last Name: {{ student.lastname }}
         </div>
   
         <div class="report-aggregate-details">
-          <mat-form-field>
-            <mat-label>Destination:</mat-label>
-            <input
-              [formControl]="firstnameControl"
-              matInput
-              #input
-              maxlength="30"
-              placeholder="Ex. Adam"
-            />
-          </mat-form-field>
+          First Name: {{ student.firstname }}
         </div>
   
         <div class="report-aggregate-details">
-          <mat-form-field>
-            <mat-label>Age:</mat-label>
-            <input
-              [formControl]="ageControl"
-              matInput
-              #input
-              maxlength="30"
-              placeholder="Ex. 18"
-            />
-          </mat-form-field>
+          Age: {{ student.age }}
         </div>
   
         <div class="report-aggregate-details">
-          <mat-form-field>
-            <mat-label>Email:</mat-label>
-            <input
-              [formControl]="emailControl"
-              matInput
-              #input
-              maxlength="30"
-              placeholder="Ex. smithadam@example.com"
-            />
-          </mat-form-field>
+          Email: {{ student.email }}
         </div>
       </div>
       <div class="column"></div>
