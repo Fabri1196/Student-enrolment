@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Services;
 using FluentValidation;
+using Infrastructure.Validators;
 
 namespace API.Services
 {
@@ -8,12 +9,16 @@ namespace API.Services
     {
         private IRepository<Student> _repository;
 
+        private StudentValidator _validator;
+
         public StudentService(IRepository<Student> repository)
         {
             _repository = repository;
+            _validator = new StudentValidator();
         }
         public void CreateStudent(Student student)
         {
+            _validator.ValidateAndThrow(student);
             _repository.Insert(student);
         }
 
@@ -25,6 +30,7 @@ namespace API.Services
 
         public bool UpdateStudent(Student student)
         {
+            _validator.ValidateAndThrow(student);
            return  _repository.Upsert(student);
         }
     }

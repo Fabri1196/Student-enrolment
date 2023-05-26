@@ -1,38 +1,38 @@
-// import { Injectable } from '@angular/core';
-// import { MatSnackBar } from '@angular/material/snack-bar';
-// import { Validator } from 'fluentvalidation-ts';
-// import { ValidationErrors } from 'fluentvalidation-ts/dist/ValidationErrors';
-// import { ReportAggregate, ReportItem } from '../student/student';
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Validator } from 'fluentvalidation-ts';
+import { ValidationErrors } from 'fluentvalidation-ts/dist/ValidationErrors';
+import { Student } from '../student/student';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class ValidatorsService {
+@Injectable({
+  providedIn: 'root'
+})
+export class ValidatorsService {
 
-//   reportAggregateValidator: ReportAggregateValidator;
+  studentValidator: StudentValidator;
 
-//   constructor(private _snackBar: MatSnackBar) {
-//     this.reportAggregateValidator = new ReportAggregateValidator();
+  constructor(private _snackBar: MatSnackBar) {
+    this.studentValidator = new StudentValidator();
 
-//   }
+  }
 
-//   validateReportAggregate(report: ReportAggregate) {
-//     var result = this.reportAggregateValidator.validate(report);
-//     return result;
-//   }
+  validateStudent(student: Student) {
+    var result = this.studentValidator.validate(student);
+    return result;
+  }
 
 //   validateReportItem(reportItem: ReportItem) {
 //     var result = new ReportItemValidator().validate(reportItem);
 //     return result;
 //   }
 
-//   showReportAggregateErrors(errors: ValidationErrors<ReportAggregate>) {
-//     var message = 'Errors: ';
-//     Object.entries(errors).forEach(([key, value], index) => {
-//       message += `\n${key}: ${value}`
-//     });
-//     this._snackBar.open(message, '', { duration: 5000, panelClass: 'snackbar' })
-//   }
+  showStudentErrors(errors: ValidationErrors<Student>) {
+    var message = 'Errors: ';
+    Object.entries(errors).forEach(([key, value], index) => {
+      message += `\n${key}: ${value}`
+    });
+    this._snackBar.open(message, '', { duration: 5000, panelClass: 'snackbar' })
+  }
 
 //   showReportItemErrors(errors: ValidationErrors<ReportItem>) {
 //     var message = 'Errors: ';
@@ -41,45 +41,39 @@
 //     });
 //     this._snackBar.open(message, '', { duration: 5000, panelClass: 'snackbar' })
 //   }
-// }
+}
 
-// class ReportAggregateValidator extends Validator<ReportAggregate> {
+class StudentValidator extends Validator<Student> {
 
-//   constructor() {
-//     super();
+  constructor() {
+    super();
 
-//     this.ruleFor('id')
-//       .notNull()
-//       .withMessage('ID null, item invalid.');
+    this.ruleFor('id')
+      .notNull()
+      .withMessage('ID null, item invalid.');
 
-//     this.ruleFor('name')
-//       .notNull()
-//       .length(1, 30)
-//       .withMessage('Please enter a valid location name.');
+    this.ruleFor('lastname')
+      .notNull()
+      .length(3, 30)
+      .withMessage('Please enter a valid last name.');
 
-//     this.ruleFor('county')
-//       .notNull()
-//       .length(1, 30)
-//       .withMessage('Please enter a valid county name.');
+    this.ruleFor('firstname')
+      .notNull()
+      .length(3, 30)
+      .withMessage('Please enter a valid first name.');
 
-//     this.ruleFor('avgFireIndex')
-//       .notNull()
-//       .inclusiveBetween(0, 30)
-//       .scalePrecision(0, 4)
-//       .withMessage('Please enter a valid FWI value.');
+    this.ruleFor('age')
+      .notNull()
+      .inclusiveBetween(17, 150)
+      .withMessage('The minimum age is 17.');
 
-//     this.ruleFor('maxFireIndex')
-//       .notNull()
-//       .inclusiveBetween(0, 30)
-//       .scalePrecision(0, 4)
-//       .withMessage('Please enter a valid FWI value.');
-
-//     this.ruleForEach('reportList')
-//       .notNull()
-//       .setValidator(() => new ReportItemValidator())
-//     // .withMessage('\nInvalid report');
-//   }
-// }
+    this.ruleFor('email')
+      .notNull()
+      .length(3, 30)
+      .emailAddress()
+      .withMessage('Please enter a valid email value.');
+  }
+}
 
 // class ReportItemValidator extends Validator<ReportItem> {
 

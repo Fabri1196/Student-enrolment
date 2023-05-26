@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Student } from 'src/app/student/student';
 import { MatDialogRef } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
+import { ValidatorsService } from '../validators/validators.service';
 
 @Component({
   selector: 'new-student',
@@ -17,11 +18,10 @@ export class NewStudentComponent {
   firstnameControl: FormControl;
   ageControl: FormControl;
   emailControl: FormControl;
-  protected showModal: boolean = true;
   constructor(
     public dialogRef: MatDialogRef<NewStudentComponent>,
     private studentService: StudentService,
-    // private validatorService: ValidatorsService,
+    private validatorService: ValidatorsService,
   ) {
     this.student = new Student();
     this.lastnameControl = new FormControl(this.student.lastname);
@@ -31,23 +31,23 @@ export class NewStudentComponent {
   }
 
   onSaveClicked(): void {
-    // try {
+    try {
       this.student.lastname = this.lastnameControl.value;
       this.student.firstname = this.firstnameControl.value;
       this.student.age = parseInt(this.ageControl.value);
       this.student.email = this.emailControl.value;
 
-      // const validationResult = this.validatorService.validateReportAggregate(this.reportAggregate);
-      // if (Object.keys(validationResult).length == 0) {
+      const validationResult = this.validatorService.validateStudent(this.student);
+      if (Object.keys(validationResult).length == 0) {
         this.studentService.upsertStudent(this.student).subscribe();
         this.dialogRef.close();
       }
-      // else {
-      //   this.validatorService.showReportAggregateErrors(validationResult);
-      // }
-    // }
-    // catch { }
-  // }
+      else {
+        this.validatorService.showStudentErrors(validationResult);
+      }
+    }
+    catch { }
+  }
   close(): void{
     this.dialogRef.close(); 
   }
