@@ -1,18 +1,21 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
-import { NewStudentComponent } from '../new-student/new-student.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
+// import { MatTable } from '@angular/material/table';
+import { NewStudentComponent } from '../new-student/new-studentcomponent';
 import { MatDialog } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 import { ViewStudentComponent } from '../view-student/view-student.component';
 import { DeleteStudentComponent } from '../delete-student/delete-student.component';
+import { Student } from 'src/app/student/student';
+import { StudentService } from 'src/app/student/student.service';
 
 @Component({
   selector: 'student-table',
   templateUrl: './student-table.component.html',
+  providers: [StudentService],
   styleUrls: ['./student-table.component.scss'],
 })
-export class StudentTableComponent {
-  // information: Student[] = [];
+export class StudentTableComponent implements OnInit{
+  information: Student[] = [];
   displayedColumns: string[] = [
     'lastname',
     'firstname',
@@ -21,26 +24,32 @@ export class StudentTableComponent {
     'actions',
   ];
 
-  information: Student[] = [
-    new Student('jj', 'papas', 55, 'e'),
-    new Student('jose', 'manzanas', 53, 'm'),
-    new Student('juan', 'naranjas', 25, 'aa'),
-  ];
+  // information: Student[] = [
+  //   new Student('jj', 'papas', 55, 'e'),
+  //   new Student('jose', 'manzanas', 53, 'm'),
+  //   new Student('juan', 'naranjas', 25, 'aa'),
+  // ];
 
-  @ViewChild(MatTable) tabla1!: MatTable<Student>;
+  // @ViewChild(MatTable) tabla1!: MatTable<Student>;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(private studentService: StudentService, public dialog: MatDialog) {}
 
-  newStudent(): void {
-    this.openCreateDialog();
+  getAllStudents(): void {
+    this.studentService.getStudents().subscribe(result => {
+      this.information = result;
+    });
   }
 
-  openCreateDialog(): void {
-    const dialogRef = this.dialog.open(NewStudentComponent);
+  newStudent(): void {
+    this.openCreateDialog(new Student);
+  }
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.getTravelTickets();
-    // });
+  openCreateDialog(student: Student): void {
+    const dialogRef = this.dialog.open(NewStudentComponent, {data: student});
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllStudents();
+    });
   }
 
   seeStudent(student: Student): void {
@@ -61,28 +70,28 @@ export class StudentTableComponent {
     const dialogRef = this.dialog.open(EditStudentComponent, {
       data: student,
     });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllStudents();
+    });
   }
 
-  openEditDialog(): void {
-    const dialogRef = this.dialog.open(EditStudentComponent);
+  // openEditDialog(): void {
+  //   const dialogRef = this.dialog.open(EditStudentComponent);
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.getTravelTickets();
-    // });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     this.getStudents();
+  //   });
+  // }
 
   deleteStudent(student: Student): void {
     const dialogRef = this.dialog.open(DeleteStudentComponent, {
       data: student,
     });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getAllStudents();
+    });
   }
-}
-
-export class Student {
-  constructor(
-    public lastname: string,
-    public firstname: string,
-    public age: number,
-    public email: string
-  ) {}
+  ngOnInit(): void {
+    this.getAllStudents();
+  }
 }

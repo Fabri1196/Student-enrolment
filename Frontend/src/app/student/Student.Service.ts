@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Student } from './Student';
+import { Student } from 'src/app/student/student';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +18,8 @@ export class StudentService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Host: 'http://localhost:4200',
-    }),
+      'Host': 'http://localhost:4200',
+    })
   };
 
   private handleError(error: HttpErrorResponse) {
@@ -40,25 +40,42 @@ export class StudentService {
   constructor(private http: HttpClient) {}
 
   getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(this.url + '/Students', this.httpOptions)
+    return this.http.get<Student[]>(this.url + '/Student', this.httpOptions)
     .pipe(catchError(this.handleError));
+    // return this.http.get<Student[]>(this.url + '/Student')
+    // .pipe(catchError(this.handleError));
   }
 
-  createReport(report: Student): Observable<Student> {
-    return this.http
-      .post<Student>(this.url + '/Student/', report, this.httpOptions)
+  getStudent(id: number): Observable<Student> {
+    return this.http.get<Student>(
+      this.url + '/Student/' + id,
+      this.httpOptions
+    )
       .pipe(catchError(this.handleError));
   }
 
-  upsertReport(report: Student): Observable<Student> {
+  createStudent(student: Student): Observable<Student> {
     return this.http
-      .put<Student>(this.url + '/Student/', report, this.httpOptions)
+      .post<Student>(this.url + '/Student/', student, this.httpOptions)
       .pipe(catchError(this.handleError));
+      // .post<Student>(this.url + '/Student/', student)
+      // .pipe(catchError(this.handleError));
   }
 
-  deleteReport(id: number): Observable<Student> {
+  upsertStudent(student: Student): Observable<Student> {
+    return this.http
+      .put<Student>(this.url + '/Student/', student, this.httpOptions)
+      .pipe(catchError(this.handleError));
+      // .put<Student>(this.url + '/Student/', student)
+      // .pipe(catchError(this.handleError));
+  }
+
+  deleteStudent(id: number): Observable<Student> {
     return this.http
       .delete<Student>(this.url + '/Student/' + id, this.httpOptions)
       .pipe(catchError(this.handleError));
+      // .delete<Student>(this.url + '/Student/' + id)
+      // // .pipe(catchError(this.handleError));
   }
 }
+

@@ -1,4 +1,4 @@
-namespace Domain.Services
+﻿namespace Domain.Services
 {
     public interface IRepository<TEntity> : IDisposable where TEntity : Domain.Entity
     {

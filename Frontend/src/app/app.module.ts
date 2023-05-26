@@ -7,7 +7,7 @@ import { DeleteStudentComponent } from './delete-student/delete-student.componen
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StudentTableComponent } from './student-table/student-table.component';
-import { NewStudentComponent } from './new-student/new-student.component';
+import { NewStudentComponent } from './new-student/new-studentcomponent';
 import { EditStudentComponent } from './edit-student/edit-student.component';
 import { ViewStudentComponent } from './view-student/view-student.component';
 
@@ -56,4 +56,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
+// platformBrowserDynamic()
+//   .bootstrapModule(AppModule)
+//   .then(success => console.log('Bootstrap success'))
+//   .catch(err => console.error(err));

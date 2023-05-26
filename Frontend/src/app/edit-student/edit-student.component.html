@@ -54,8 +54,8 @@
         </mat-form-field>
       </div>
 
-      <button mat-raised-button color="primary" focusable="false">Edit</button>
-      <button mat-raised-button color="warn" focusable="false">Cancel</button>
+      <button mat-raised-button color="primary" focusable="false" (click)="onStartEdit()">Edit</button>
+      <button mat-raised-button color="warn" focusable="false" (click)="close()">Cancel</button>
       
     </div>
     <div class="column"></div>

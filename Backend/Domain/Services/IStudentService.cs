@@ -1,4 +1,4 @@
-using Domain.Entities;
+﻿using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ namespace Domain.Services
 {
     public interface IStudentService
     {
-        public void CreateReport(Student student);
-        public bool UpdateReport(Student student);
-        public bool DeleteReport(int id);
-        public Student GetReport(int id);
+        public void CreateStudent(Student student);
+        public bool UpdateStudent(Student student);
+        public bool DeleteStudent(int id);
+        public Student GetStudent(int id);
         public IEnumerable<Student> GetAllStudents();
     }
 }
