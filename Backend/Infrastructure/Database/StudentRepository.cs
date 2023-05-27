@@ -5,12 +5,12 @@ using LiteDB;
 
 namespace Infrastructure.Database
 {
-    public class StudenDatabase : IRepository<Student>
+    public class StudentDatabase : IRepository<Student>
     {
         private LiteDatabase _database;
         private ILiteCollection<Student> _collection;
 
-        public StudenDatabase(LiteDatabase database)
+        public StudentDatabase(LiteDatabase database)
         {
             _database = database;
             _collection = _database.GetCollection<Student>("Students");

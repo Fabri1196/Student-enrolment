@@ -1,5 +1,6 @@
 <div>
   <div mat-dialog-content class="window">
+    <button class="close-button" (click)="close()">X</button>
     <h1>Complete the details</h1>
     <div class="row">
       <div class="column">
@@ -51,6 +52,58 @@
               #input
               maxlength="30"
               placeholder="Ex. smithadam@example.com"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="report-aggregate-details">
+          <mat-form-field>
+            <mat-label>Street:</mat-label>
+            <input
+              [formControl]="streetControl"
+              matInput
+              #input
+              maxlength="30"
+              placeholder="Ex. 445 McCarran Street"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="report-aggregate-details">
+          <mat-form-field>
+            <mat-label>Postal Code:</mat-label>
+            <input
+              [formControl]="postalCodeControl"
+              matInput
+              #input
+              maxlength="30"
+              placeholder="Ex. MO64015"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="report-aggregate-details">
+          <mat-form-field>
+            <mat-label>City:</mat-label>
+            <input
+              [formControl]="cityControl"
+              matInput
+              #input
+              maxlength="30"
+              placeholder="Ex. York"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="report-aggregate-details">
+          <mat-form-field>
+            <mat-label>Country:</mat-label>
+            <input
+              [formControl]="countryControl"
+              matInput
+              #input
+              maxlength="30"
+              placeholder="Ex. Great Britain"
             />
           </mat-form-field>
         </div>

@@ -1,24 +1,36 @@
 <div mat-dialog-content class="window">
-  <h1>Complete the details</h1>
+  <button class="close-button" (click)="close()">X</button>
+  <h1>
+    Personal information of {{ student.lastname }} {{ student.firstname }}
+  </h1>
   <div class="row">
     <div class="column">
-      <div class="report-aggregate-details">
-        Last Name: {{ student.lastname }}
-      </div>
+      <div class="description">Age: {{ student.age }}</div>
 
-      <div class="report-aggregate-details">
-        First Name: {{ student.firstname }}
-      </div>
+      <div class="description">Email: {{ student.email }}</div>
 
-      <div class="report-aggregate-details">
-        Age: {{ student.age }}
-      </div>
-
-      <div class="report-aggregate-details">
-        Email: {{ student.email }}
+      <div *ngFor="let address of student.address; index as i">
+        <div class="description">
+          Country: {{ address.country }}
+        </div>
       </div>
     </div>
-    <div class="column"></div>
+
+    <div class="column">
+      <div *ngFor="let address of student.address; index as i">
+        <div class="description">City: {{ address.city }}</div>
+
+        <div class="description">Street: {{ address.street }}</div>
+
+        <div class="description">
+          Postal Code: {{ address.postalCode }}
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="add-report"></div>
+  <div class="add-report">
+    <button mat-raised-button color="warn" focusable="false" (click)="close()">
+      Cancel
+    </button>
+  </div>
 </div>

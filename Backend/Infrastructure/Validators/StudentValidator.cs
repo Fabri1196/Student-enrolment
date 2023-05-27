@@ -24,7 +24,12 @@ namespace Infrastructure.Validators
 
             RuleFor(x => x.email)
                 .NotNull()
-                .Length(3, 30);
+                .Length(3, 30)
+                .EmailAddress();
+
+            RuleForEach(x => x.address)
+                .NotNull()
+                .SetValidator(new AddressValidator());
         }
     }
 }

@@ -16,15 +16,15 @@ namespace Application
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            var db = new LiteDatabase(@"TestDatabase.db");
-            IRepository<Student> repository = new StudenDatabase(db);
+            var db = new LiteDatabase(@"TestDatabase2.db");
+            IRepository<Student> repositoryStudent = new StudentDatabase(db);
 
-            if (repository.GetAll().Any() == false)
+            if (repositoryStudent.GetAll().Any() == false)
             {
-                populateDatabase(repository);
+                studentDatabase(repositoryStudent);
             }
 
-            builder.Services.AddScoped<IStudentService, StudentService>(f => new StudentService(repository));
+            builder.Services.AddScoped<IStudentService, StudentService>(f => new StudentService(repositoryStudent));
 
             // Add services to the container.
             builder.Services.AddControllers();
@@ -63,15 +63,18 @@ namespace Application
 
             app.Run();
         }
-        private static void populateDatabase(IRepository<Student> repository)
+        private static void studentDatabase(IRepository<Student> repositoryStudent)
         {
-            repository.Insert(
+            repositoryStudent.Insert(
                 new Student(
                     "Cesar",
                     "Johnson",
                     19,
-                    "cesarjohnson@gmail.com"
+                    "cesarjohnson@gmail.com",
+                    new List<Address>(){new Address("71 MT. Mayon St. Vington","X20450", 
+                    "Munich",
+                    "Germany")}
                 ));
-        }   
+        }
     }
 }
