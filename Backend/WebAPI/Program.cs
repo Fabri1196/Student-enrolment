@@ -69,7 +69,7 @@ namespace Application
                 new Student(
                     "Cesar",
                     "Johnson",
-                    19,
+                    new DateTime(2000,04,08),
                     "cesarjohnson@gmail.com",
                     new List<Address>(){new Address("71 MT. Mayon St. Vington","X20450", 
                     "Munich",

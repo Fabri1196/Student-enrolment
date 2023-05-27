@@ -13,16 +13,22 @@ namespace Infrastructure.Validators
         public AddressValidator()
         {
             RuleFor(x => x.street)
-                .NotNull();
+                .NotNull()
+                .Length(5, 50);
             
             RuleFor(x => x.postalCode)
-                .NotNull();
+                .NotNull()
+                .Length(5, 50);
             
             RuleFor(x => x.city)
-                .NotNull();
+                .NotNull()
+                .Length(3, 50)
+                .Matches("^[A-Za-z\\s]+$");
             
             RuleFor(x => x.country)
-                .NotNull();
+                .NotNull()
+                .Length(3, 50)
+                .Matches("^[A-Za-z\\s]+$");
         }
     }
 }

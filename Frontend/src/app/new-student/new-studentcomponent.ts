@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { StudentService } from 'src/app/student/students.service';
+import { StudentService } from 'src/app/student/student.service';
 import { FormControl } from '@angular/forms';
-import { Address, Student } from 'src/app/student/students';
+import { Address, Student } from 'src/app/student/student';
 import { MatDialogRef } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 import { ValidatorsService } from '../validators/validators.service';
@@ -16,7 +16,7 @@ export class NewStudentComponent {
   protected student: Student;
   lastnameControl: FormControl;
   firstnameControl: FormControl;
-  ageControl: FormControl;
+  birthdateControl: FormControl;
   emailControl: FormControl;
   protected address: Address;
   streetControl: FormControl;
@@ -31,7 +31,7 @@ export class NewStudentComponent {
     this.student = new Student();
     this.lastnameControl = new FormControl(this.student.lastname);
     this.firstnameControl = new FormControl(this.student.firstname);
-    this.ageControl = new FormControl(this.student.age);
+    this.birthdateControl = new FormControl(this.student.birthdate);
     this.emailControl = new FormControl(this.student.email);
     this.address = new Address();
     this.streetControl = new FormControl(this.address.street);
@@ -44,7 +44,7 @@ export class NewStudentComponent {
     try {
       this.student.lastname = this.lastnameControl.value;
       this.student.firstname = this.firstnameControl.value;
-      this.student.age = parseInt(this.ageControl.value);
+      this.student.birthdate = new Date(this.birthdateControl.value);
       this.student.email = this.emailControl.value;
       this.address.street = this.streetControl.value;
       this.address.postalCode = this.postalCodeControl.value;
@@ -52,13 +52,19 @@ export class NewStudentComponent {
       this.address.country = this.countryControl.value;
       this.student.address.push(this.address)
 
-      const validationResult = this.validatorService.validateStudent(this.student);
-      if (Object.keys(validationResult).length == 0) {
-        this.studentService.upsertStudent(this.student).subscribe();
-        this.dialogRef.close();
+      const validationResultStudent = this.validatorService.validateStudent(this.student);
+      const validationResultAddress = this.validatorService.validateAddress(this.address);
+      if (Object.keys(validationResultStudent).length == 0) {
+        if (Object.keys(validationResultAddress).length == 0){
+          this.studentService.upsertStudent(this.student).subscribe();
+          this.dialogRef.close();
+        }
+        else{
+          this.validatorService.showAddressErrors(validationResultAddress);
+        }
       }
       else {
-        this.validatorService.showStudentErrors(validationResult);
+        this.validatorService.showStudentErrors(validationResultStudent);
       }
     }
     catch { }

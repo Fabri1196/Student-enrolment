@@ -20,8 +20,8 @@
     </ng-container>
   
     <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef><div align="center">Age</div></th>
-      <td mat-cell *matCellDef="let student">{{ student.age }}</td>
+      <th mat-header-cell *matHeaderCellDef><div align="center">Birthdate</div></th>
+      <td mat-cell *matCellDef="let student">{{ student.birthdate | date: 'yyyy-MM-dd' }}</td>
     </ng-container>
   
     <ng-container matColumnDef="email">

@@ -5,8 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 import { ViewStudentComponent } from '../view-student/view-student.component';
 import { DeleteStudentComponent } from '../delete-student/delete-student.component';
-import { Student } from 'src/app/student/students';
-import { StudentService } from 'src/app/student/students.service';
+import { Student } from 'src/app/student/student';
+import { StudentService } from 'src/app/student/student.service';
 
 @Component({
   selector: 'student-table',

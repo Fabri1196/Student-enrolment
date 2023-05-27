@@ -12,24 +12,32 @@ namespace Infrastructure.Validators
 
             RuleFor(x => x.lastname)
                 .NotNull()
-                .Length(3, 30);
+                .Length(3, 50)
+                .Matches("^[A-Za-z\\s]+$");
 
             RuleFor(x => x.firstname)
                 .NotNull()
-                .Length(3, 30);
+                .Length(3, 50)
+                .Matches("^[A-Za-z\\s]+$");
 
-            RuleFor(x => x.age)
+            RuleFor(x => x.birthdate)
                 .NotNull()
-                .InclusiveBetween(17, 150);
+                .Must(BeOlder);
 
             RuleFor(x => x.email)
                 .NotNull()
-                .Length(3, 30)
+                .MaximumLength(50)
                 .EmailAddress();
 
             RuleForEach(x => x.address)
                 .NotNull()
                 .SetValidator(new AddressValidator());
+        }
+
+        private bool BeOlder(DateTime birthdate)
+        {
+            var age = DateTime.Today.Year - birthdate.Year;
+            return age>=18;
         }
     }
 }

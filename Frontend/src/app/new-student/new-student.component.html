@@ -16,7 +16,7 @@
             />
           </mat-form-field>
         </div>
-  
+
         <div class="report-aggregate-details">
           <mat-form-field>
             <mat-label>First Name:</mat-label>
@@ -56,21 +56,28 @@
           </mat-form-field>
         </div>
       </div>
-      
+
       <div class="column">
         <div class="report-aggregate-details">
           <mat-form-field>
-            <mat-label>Age:</mat-label>
+            <mat-label>Birthdate:</mat-label>
             <input
-              [formControl]="ageControl"
               matInput
+              readonly
+              [formControl]="birthdateControl"
+              [matDatepicker]="birthdatePicker"
               #input
               maxlength="30"
               placeholder="Ex. 18"
             />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="birthdatePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #birthdatePicker></mat-datepicker>
           </mat-form-field>
         </div>
-  
+
         <div class="report-aggregate-details">
           <mat-form-field>
             <mat-label>Email:</mat-label>
@@ -108,12 +115,28 @@
               placeholder="Ex. Great Britain"
             />
           </mat-form-field>
-        </div>  
+        </div>
       </div>
     </div>
     <div class="add-report">
-      <button mat-raised-button class="button-center" color="primary" focusable="false" (click)="onSaveClicked()">Save</button>
-        <button mat-raised-button class="button-center" color="warn" focusable="false" (click)="close()">Cancel</button>
+      <button
+        mat-raised-button
+        class="button-center"
+        color="primary"
+        focusable="false"
+        (click)="onSaveClicked()"
+      >
+        Save
+      </button>
+      <button
+        mat-raised-button
+        class="button-center"
+        color="warn"
+        focusable="false"
+        (click)="close()"
+      >
+        Cancel
+      </button>
     </div>
   </div>
 </div>

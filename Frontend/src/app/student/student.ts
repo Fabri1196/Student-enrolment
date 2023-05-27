@@ -2,7 +2,7 @@ export class Student {
 	id: number = 0;
 	lastname: string = "Last Name";
 	firstname: string = "First Name";
-	age: number = 0;
+	birthdate: Date = new Date();
 	email: string = "email";
 	address: Address[] = [];
 }

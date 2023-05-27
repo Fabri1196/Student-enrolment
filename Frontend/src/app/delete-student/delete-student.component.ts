@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { StudentService } from 'src/app/student/students.service';
+import { StudentService } from 'src/app/student/student.service';
 import { FormControl } from '@angular/forms';
-import { Student } from 'src/app/student/students';
+import { Student } from 'src/app/student/student';
 import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
@@ -14,7 +14,7 @@ export class DeleteStudentComponent {
   student: Student;
   lastnameControl: FormControl;
   firstnameControl: FormControl;
-  ageControl: FormControl;
+  birthdateControl: FormControl;
   emailControl: FormControl;
 
   constructor(
@@ -25,7 +25,7 @@ export class DeleteStudentComponent {
     this.student = JSON.parse(JSON.stringify(input));
     this.lastnameControl = new FormControl(this.student.lastname);
     this.firstnameControl = new FormControl(this.student.firstname);
-    this.ageControl = new FormControl(this.student.age);
+    this.birthdateControl = new FormControl(this.student.birthdate);
     this.emailControl = new FormControl(this.student.email);
   }
 
