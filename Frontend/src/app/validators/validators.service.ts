@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Validator } from 'fluentvalidation-ts';
 import { ValidationErrors } from 'fluentvalidation-ts/dist/ValidationErrors';
-import { Student } from '../student/student';
+import { Student } from '../student/students';
 
 @Injectable({
   providedIn: 'root'

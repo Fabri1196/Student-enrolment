@@ -5,8 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
 import { ViewStudentComponent } from '../view-student/view-student.component';
 import { DeleteStudentComponent } from '../delete-student/delete-student.component';
-import { Student } from 'src/app/student/student';
-import { StudentService } from 'src/app/student/student.service';
+import { Student } from 'src/app/student/students';
+import { StudentService } from 'src/app/student/students.service';
 
 @Component({
   selector: 'student-table',
@@ -49,6 +49,7 @@ export class StudentTableComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(result => {
       this.getAllStudents();
+      this.refresh();
     });
   }
 
@@ -72,7 +73,9 @@ export class StudentTableComponent implements OnInit{
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getAllStudents();
+      this.refresh();
     });
+    
   }
 
   // openEditDialog(): void {
@@ -89,9 +92,13 @@ export class StudentTableComponent implements OnInit{
     });
     dialogRef.afterClosed().subscribe(result => {
       this.getAllStudents();
+      this.refresh();
     });
   }
   ngOnInit(): void {
     this.getAllStudents();
   }
+  refresh(): void {
+    window.location.reload();
+}
 }

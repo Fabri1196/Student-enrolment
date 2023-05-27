@@ -29,7 +29,35 @@
             />
           </mat-form-field>
         </div>
-  
+
+        <div class="report-aggregate-details">
+          <mat-form-field>
+            <mat-label>Street:</mat-label>
+            <input
+              [formControl]="streetControl"
+              matInput
+              #input
+              maxlength="30"
+              placeholder="Ex. 445 McCarran Street"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="report-aggregate-details">
+          <mat-form-field>
+            <mat-label>Postal Code:</mat-label>
+            <input
+              [formControl]="postalCodeControl"
+              matInput
+              #input
+              maxlength="30"
+              placeholder="Ex. MO64015"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      
+      <div class="column">
         <div class="report-aggregate-details">
           <mat-form-field>
             <mat-label>Age:</mat-label>
@@ -58,32 +86,6 @@
 
         <div class="report-aggregate-details">
           <mat-form-field>
-            <mat-label>Street:</mat-label>
-            <input
-              [formControl]="streetControl"
-              matInput
-              #input
-              maxlength="30"
-              placeholder="Ex. 445 McCarran Street"
-            />
-          </mat-form-field>
-        </div>
-
-        <div class="report-aggregate-details">
-          <mat-form-field>
-            <mat-label>Postal Code:</mat-label>
-            <input
-              [formControl]="postalCodeControl"
-              matInput
-              #input
-              maxlength="30"
-              placeholder="Ex. MO64015"
-            />
-          </mat-form-field>
-        </div>
-
-        <div class="report-aggregate-details">
-          <mat-form-field>
             <mat-label>City:</mat-label>
             <input
               [formControl]="cityControl"
@@ -106,14 +108,12 @@
               placeholder="Ex. Great Britain"
             />
           </mat-form-field>
-        </div>
-  
-        <button mat-raised-button color="primary" focusable="false" (click)="onSaveClicked()">Save</button>
-        <button mat-raised-button color="warn" focusable="false" (click)="close()">Cancel</button>
-  
+        </div>  
       </div>
-      <div class="column"></div>
     </div>
-    <div class="add-report"></div>
+    <div class="add-report">
+      <button mat-raised-button class="button-center" color="primary" focusable="false" (click)="onSaveClicked()">Save</button>
+        <button mat-raised-button class="button-center" color="warn" focusable="false" (click)="close()">Cancel</button>
+    </div>
   </div>
 </div>

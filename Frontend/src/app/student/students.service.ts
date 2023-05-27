@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Student } from 'src/app/student/student';
+import { Student } from 'src/app/student/students';
 
 @Injectable({
   providedIn: 'root',

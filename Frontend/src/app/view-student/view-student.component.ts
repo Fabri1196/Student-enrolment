@@ -1,7 +1,7 @@
 import { Component, Inject, Input } from '@angular/core';
-import { StudentService } from 'src/app/student/student.service';
+import { StudentService } from 'src/app/student/students.service';
 import { FormControl } from '@angular/forms';
-import { Address, Student } from 'src/app/student/student';
+import { Address, Student } from 'src/app/student/students';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
