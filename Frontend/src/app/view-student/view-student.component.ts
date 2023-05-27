@@ -1,7 +1,6 @@
 import { Component, Inject, Input } from '@angular/core';
 import { StudentService } from 'src/app/student/student.service';
-import { FormControl } from '@angular/forms';
-import { Address, Student } from 'src/app/student/student';
+import { Student } from 'src/app/student/student';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -12,25 +11,15 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class ViewStudentComponent {
   protected student: Student;
-  // @Input() address: Address;
-  // lastnameControl: FormControl;
-  // firstnameControl: FormControl;
-  // ageControl: FormControl;
-  // emailControl: FormControl;
 
   constructor(
     public dialogRef: MatDialogRef<ViewStudentComponent>,
-    // private StudentService: StudentService,
-    @Inject(MAT_DIALOG_DATA) private input: Student,
-    ) {
+    @Inject(MAT_DIALOG_DATA) private input: Student
+  ) {
     this.student = JSON.parse(JSON.stringify(input));
-    // this.lastnameControl = new FormControl(this.student.lastname);
-    // this.firstnameControl = new FormControl(this.student.firstname);
-    // this.ageControl = new FormControl(this.student.age);
-    // this.emailControl = new FormControl(this.student.email);
   }
-  
-  close(): void{
-    this.dialogRef.close(); 
+
+  close(): void {
+    this.dialogRef.close();
   }
 }

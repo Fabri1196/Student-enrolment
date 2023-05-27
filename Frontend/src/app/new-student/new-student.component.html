@@ -1,7 +1,7 @@
 <div>
   <div mat-dialog-content class="window">
     <button class="close-button" (click)="close()">X</button>
-    <h1>Complete the details</h1>
+    <h1>Complete the personal information</h1>
     <div class="row">
       <div class="column">
         <div class="report-aggregate-details">
@@ -55,6 +55,19 @@
             />
           </mat-form-field>
         </div>
+
+        <div class="report-aggregate-details">
+          <mat-form-field>
+            <mat-label>Institution Name:</mat-label>
+            <input
+              [formControl]="nameUniversityControl"
+              matInput
+              #input
+              maxlength="30"
+              placeholder="Ex. Ludwig Maximilian"
+            />
+          </mat-form-field>
+        </div>
       </div>
 
       <div class="column">
@@ -68,7 +81,7 @@
               [matDatepicker]="birthdatePicker"
               #input
               maxlength="30"
-              placeholder="Ex. 18"
+              placeholder="Ex. 2001-05-23"
             />
             <mat-datepicker-toggle
               matIconSuffix
@@ -116,6 +129,19 @@
             />
           </mat-form-field>
         </div>
+
+        <div class="report-aggregate-details">
+          <mat-form-field>
+            <mat-label>Institution City:</mat-label>
+            <input
+              [formControl]="cityUniversityControl"
+              matInput
+              #input
+              maxlength="30"
+              placeholder="Ex. London"
+            />
+          </mat-form-field>
+        </div>
       </div>
     </div>
     <div class="add-report">
@@ -124,7 +150,7 @@
         class="button-center"
         color="primary"
         focusable="false"
-        (click)="onSaveClicked()"
+        (click)="saveStudent()"
       >
         Save
       </button>

@@ -7,4 +7,3 @@ RUN npm install -g @angular/cli
 RUN apt update && apt install -y curl
 COPY . /app
 CMD ng serve --host 0.0.0.0
-

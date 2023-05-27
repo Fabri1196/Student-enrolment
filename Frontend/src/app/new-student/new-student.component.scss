@@ -1,7 +1,7 @@
 .window {
   width: 500px;
   height: 500px;
-  border-radius: 8px, !important;
+  border-radius: 8px !important;
   overflow: auto;
 }
 
@@ -22,12 +22,12 @@
   justify-content: center;
   margin: 8px;
 }
-  
+
 .report-list {
   border-radius: 8px;
   padding: 8px;
 }
-  
+
 .row {
   display: flex;
   margin-top: 16px;
@@ -61,6 +61,6 @@
   outline: none;
 }
 
-.button-center{
-  margin: 2px
+.button-center {
+  margin: 2px;
 }

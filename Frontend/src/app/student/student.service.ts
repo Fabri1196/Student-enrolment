@@ -42,8 +42,6 @@ export class StudentService {
   getStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(this.url + '/Student', this.httpOptions)
     .pipe(catchError(this.handleError));
-    // return this.http.get<Student[]>(this.url + '/Student')
-    // .pipe(catchError(this.handleError));
   }
 
   getStudent(id: number): Observable<Student> {
@@ -58,24 +56,18 @@ export class StudentService {
     return this.http
       .post<Student>(this.url + '/Student/', student, this.httpOptions)
       .pipe(catchError(this.handleError));
-      // .post<Student>(this.url + '/Student/', student)
-      // .pipe(catchError(this.handleError));
   }
 
   upsertStudent(student: Student): Observable<Student> {
     return this.http
       .put<Student>(this.url + '/Student/', student, this.httpOptions)
       .pipe(catchError(this.handleError));
-      // .put<Student>(this.url + '/Student/', student)
-      // .pipe(catchError(this.handleError));
   }
 
   deleteStudent(id: number): Observable<Student> {
     return this.http
       .delete<Student>(this.url + '/Student/' + id, this.httpOptions)
       .pipe(catchError(this.handleError));
-      // .delete<Student>(this.url + '/Student/' + id)
-      // // .pipe(catchError(this.handleError));
   }
 }
 

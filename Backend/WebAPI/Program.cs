@@ -26,14 +26,8 @@ namespace Application
 
             builder.Services.AddScoped<IStudentService, StudentService>(f => new StudentService(repositoryStudent));
 
-            // Add services to the container.
             builder.Services.AddControllers();
 
-            // Swagger disabled
-            //builder.Services.AddEndpointsApiExplorer();
-            //builder.Services.AddSwaggerGen();
-
-            // Configure CORS to interact with Frontend.
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("Origins", policy =>
@@ -47,15 +41,7 @@ namespace Application
 
             var app = builder.Build();
 
-            // if (app.Environment.IsDevelopment())
-            // {
-            //     app.UseSwagger();
-            //     app.UseSwaggerUI();
-            // }
-
             app.UseCors("Origins");
-
-            // app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
@@ -67,13 +53,14 @@ namespace Application
         {
             repositoryStudent.Insert(
                 new Student(
-                    "Cesar",
                     "Johnson",
-                    new DateTime(2000,04,08),
+                    "Michael",
+                    new DateTime(2000, 04, 08),
                     "cesarjohnson@gmail.com",
-                    new List<Address>(){new Address("71 MT. Mayon St. Vington","X20450", 
+                    new Address("71 MT. Mayon St. Vington", "X20450",
                     "Munich",
-                    "Germany")}
+                    "Germany"),
+                    new University("Harvard", "Massachusetts")
                 ));
         }
     }

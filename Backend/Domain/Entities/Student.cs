@@ -12,15 +12,17 @@ namespace Domain.Entities
         public string firstname { get; set; }
         public DateTime birthdate { get; set; }
         public string email { get; set; }
-        public List<Address> address { get; set; }
+        public Address address { get; set; }
+        public University university { get; set; }
 
-        public Student(string lastname, string firstname, DateTime birthdate, string email, List<Address> address)
+        public Student(string lastname, string firstname, DateTime birthdate, string email, Address address, University university)
         {
             this.lastname = lastname;
             this.firstname = firstname;
             this.birthdate = birthdate;
             this.email = email;
             this.address = address;
+            this.university = university;
         }
 
         public Student() { }

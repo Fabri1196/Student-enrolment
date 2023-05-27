@@ -29,15 +29,19 @@ namespace Infrastructure.Validators
                 .MaximumLength(50)
                 .EmailAddress();
 
-            RuleForEach(x => x.address)
+            RuleFor(x => x.address)
                 .NotNull()
                 .SetValidator(new AddressValidator());
+
+            RuleFor(x => x.university)
+                .NotNull()
+                .SetValidator(new UniversityValidator());
         }
 
         private bool BeOlder(DateTime birthdate)
         {
             var age = DateTime.Today.Year - birthdate.Year;
-            return age>=18;
+            return age >= 18;
         }
     }
 }

@@ -31,7 +31,7 @@ namespace API.Services
         public bool UpdateStudent(Student student)
         {
             _validator.ValidateAndThrow(student);
-           return  _repository.Upsert(student);
+            return _repository.Upsert(student);
         }
     }
 }

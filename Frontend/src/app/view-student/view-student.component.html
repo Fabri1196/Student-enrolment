@@ -5,26 +5,30 @@
   </h1>
   <div class="row">
     <div class="column">
-      <div class="description">Birthdate: {{ student.birthdate }}</div>
+      <div class="description">
+        Birthdate: {{ student.birthdate | date : "yyyy-MM-dd" }}
+      </div>
 
       <div class="description">Email: {{ student.email }}</div>
 
-      <div *ngFor="let address of student.address; index as i">
-        <div class="description">
-          Country: {{ address.country }}
-        </div>
+      <div class="description">Country: {{ student.address.country }}</div>
+
+      <div class="description">
+        Institution Name: {{ student.university.name }}
       </div>
     </div>
 
     <div class="column">
-      <div *ngFor="let address of student.address; index as i">
-        <div class="description">City: {{ address.city }}</div>
+      <div class="description">City: {{ student.address.city }}</div>
 
-        <div class="description">Street: {{ address.street }}</div>
+      <div class="description">Street: {{ student.address.street }}</div>
 
-        <div class="description">
-          Postal Code: {{ address.postalCode }}
-        </div>
+      <div class="description">
+        Postal Code: {{ student.address.postalCode }}
+      </div>
+
+      <div class="description">
+        Institution City: {{ student.university.city }}
       </div>
     </div>
   </div>

@@ -13,7 +13,8 @@ namespace Domain.Entities
         public string city { get; set; }
         public string country { get; set; }
 
-        public Address(string street, string postalCode, string city, string country){
+        public Address(string street, string postalCode, string city, string country)
+        {
             this.street = street;
             this.postalCode = postalCode;
             this.city = city;

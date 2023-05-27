@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-// import { MatTable } from '@angular/material/table';
 import { NewStudentComponent } from '../new-student/new-studentcomponent';
 import { MatDialog } from '@angular/material/dialog';
 import { EditStudentComponent } from '../edit-student/edit-student.component';
@@ -14,40 +13,37 @@ import { StudentService } from 'src/app/student/student.service';
   providers: [StudentService],
   styleUrls: ['./student-table.component.scss'],
 })
-export class StudentTableComponent implements OnInit{
+export class StudentTableComponent implements OnInit {
   information: Student[] = [];
   displayedColumns: string[] = [
     'lastname',
     'firstname',
-    'age',
+    'birthdate',
     'email',
+    'country',
+    'university',
     'actions',
   ];
 
-  // information: Student[] = [
-  //   new Student('jj', 'papas', 55, 'e'),
-  //   new Student('jose', 'manzanas', 53, 'm'),
-  //   new Student('juan', 'naranjas', 25, 'aa'),
-  // ];
-
-  // @ViewChild(MatTable) tabla1!: MatTable<Student>;
-
-  constructor(private studentService: StudentService, public dialog: MatDialog) {}
+  constructor(
+    private studentService: StudentService,
+    public dialog: MatDialog
+  ) {}
 
   getAllStudents(): void {
-    this.studentService.getStudents().subscribe(result => {
+    this.studentService.getStudents().subscribe((result) => {
       this.information = result;
     });
   }
 
   newStudent(): void {
-    this.openCreateDialog(new Student);
+    this.openCreateDialog(new Student());
   }
 
   openCreateDialog(student: Student): void {
-    const dialogRef = this.dialog.open(NewStudentComponent, {data: student});
+    const dialogRef = this.dialog.open(NewStudentComponent, { data: student });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.getAllStudents();
       this.refresh();
     });
@@ -59,38 +55,21 @@ export class StudentTableComponent implements OnInit{
     });
   }
 
-  openSeeDialog(index: number): void {
-    // const dialogRef = this.dialog.open(EditStudentComponent);
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.getTravelTickets();
-    // });
-  }
-
   editStudent(student: Student): void {
     const dialogRef = this.dialog.open(EditStudentComponent, {
       data: student,
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.getAllStudents();
       this.refresh();
     });
-    
   }
-
-  // openEditDialog(): void {
-  //   const dialogRef = this.dialog.open(EditStudentComponent);
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     this.getStudents();
-  //   });
-  // }
 
   deleteStudent(student: Student): void {
     const dialogRef = this.dialog.open(DeleteStudentComponent, {
       data: student,
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       this.getAllStudents();
       this.refresh();
     });
@@ -100,5 +79,5 @@ export class StudentTableComponent implements OnInit{
   }
   refresh(): void {
     window.location.reload();
-}
+  }
 }

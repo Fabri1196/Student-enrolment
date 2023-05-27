@@ -54,6 +54,19 @@
           />
         </mat-form-field>
       </div>
+
+      <div class="report-aggregate-details">
+        <mat-form-field>
+          <mat-label>Institution Name:</mat-label>
+          <input
+            [formControl]="nameUniversityControl"
+            matInput
+            #input
+            maxlength="30"
+            placeholder="Ex. Ludwig Maximilian"
+          />
+        </mat-form-field>
+      </div>
     </div>
 
     <div class="column">
@@ -61,15 +74,19 @@
         <mat-form-field>
           <mat-label>Birthdate:</mat-label>
           <input
-            matInput readonly
+            matInput
+            readonly
             [formControl]="birthdateControl"
             [matDatepicker]="birthdatePicker"
             matInput
             #input
             maxlength="30"
-            placeholder="Ex. 18"
+            placeholder="Ex. 2001-05-23"
           />
-          <mat-datepicker-toggle matIconSuffix [for]="birthdatePicker"></mat-datepicker-toggle>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="birthdatePicker"
+          ></mat-datepicker-toggle>
           <mat-datepicker #birthdatePicker></mat-datepicker>
         </mat-form-field>
       </div>
@@ -112,11 +129,39 @@
           />
         </mat-form-field>
       </div>
+
+      <div class="report-aggregate-details">
+        <mat-form-field>
+          <mat-label>Institution City:</mat-label>
+          <input
+            [formControl]="cityUniversityControl"
+            matInput
+            #input
+            maxlength="30"
+            placeholder="Ex. London"
+          />
+        </mat-form-field>
+      </div>
     </div>
   </div>
   <div class="add-report">
-    <button mat-raised-button class="button-center" color="primary" focusable="false" (click)="onStartEdit()">Edit</button>
-      <button mat-raised-button class="button-center" color="warn" focusable="false" (click)="close()">Cancel</button>
-
+    <button
+      mat-raised-button
+      class="button-center"
+      color="primary"
+      focusable="false"
+      (click)="editStudent()"
+    >
+      Edit
+    </button>
+    <button
+      mat-raised-button
+      class="button-center"
+      color="warn"
+      focusable="false"
+      (click)="close()"
+    >
+      Cancel
+    </button>
   </div>
 </div>

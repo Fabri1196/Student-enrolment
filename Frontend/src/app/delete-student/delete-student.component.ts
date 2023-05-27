@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { StudentService } from 'src/app/student/student.service';
 import { FormControl } from '@angular/forms';
 import { Student } from 'src/app/student/student';
-import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'delete-student',
@@ -34,7 +34,7 @@ export class DeleteStudentComponent {
     this.dialogRef.close();
   }
 
-  close(): void{
-    this.dialogRef.close(); 
+  close(): void {
+    this.dialogRef.close();
   }
 }

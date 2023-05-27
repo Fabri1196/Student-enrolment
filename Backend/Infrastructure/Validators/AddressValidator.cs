@@ -15,16 +15,16 @@ namespace Infrastructure.Validators
             RuleFor(x => x.street)
                 .NotNull()
                 .Length(5, 50);
-            
+
             RuleFor(x => x.postalCode)
                 .NotNull()
                 .Length(5, 50);
-            
+
             RuleFor(x => x.city)
                 .NotNull()
                 .Length(3, 50)
                 .Matches("^[A-Za-z\\s]+$");
-            
+
             RuleFor(x => x.country)
                 .NotNull()
                 .Length(3, 50)
